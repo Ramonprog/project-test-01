@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  gap: 48px;
+  padding: 32px;
+
+  form {
+    height: 18.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+
+    height: 18.75rem;
+    width: 31.25rem;
+
+    button {
+      margin-top: 0.625rem;
+    }
+  }
+}
