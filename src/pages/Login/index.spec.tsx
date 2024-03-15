@@ -17,4 +17,24 @@ describe('Testa o componente de Login', () => {
 
         expect(inputs).toHaveLength(2)
     })
+    test('devem haver um botão na minha tela', async () => {
+        render(<Login />)
+        const button = await screen.findByRole('button', {
+            name: 'Login'
+        })
+
+        expect(button).toBeInTheDocument()
+    })
+    test('devem haver um input para e-mail', async () => {
+        render(<Login />)
+        const inputEmail = await screen.findByPlaceholderText('Insira seu e-mail')
+
+        expect(inputEmail).toBeInTheDocument()
+    })
+    test('devem haver um input para senha', async () => {
+        render(<Login />)
+        const inputPassword = await screen.findByPlaceholderText('Insira Sua senha')
+
+        expect(inputPassword).toBeInTheDocument()
+    })
 })
