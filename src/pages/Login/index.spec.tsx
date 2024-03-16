@@ -6,7 +6,8 @@ const navigateMock = vi.fn()
 describe('Testa o componente de Login', () => {
 
     vi.mock('react-router-dom', () => ({
-        useNavigate: () => navigateMock
+        useNavigate: () => navigateMock,
+        Link: vi.fn().mockImplementation(props => props.children)
     }))
 
     test('deve haver um titulo escrito "Sign In"', async () => {

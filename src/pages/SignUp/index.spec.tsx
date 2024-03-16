@@ -5,7 +5,8 @@ const navigateMock = vi.fn()
 describe('Testa o componente SignUp', () => {
 
     vi.mock('react-router-dom', () => ({
-        useNavigate: () => navigateMock
+        useNavigate: () => navigateMock,
+        Link: vi.fn().mockImplementation(props => props.children)
     }))
     test('Devem haver 2 inputs na minha tela', async () => {
         render(<SignUp />)
@@ -41,5 +42,13 @@ describe('Testa o componente SignUp', () => {
         fireEvent.click(button)
 
         expect(navigateMock).toHaveBeenCalledTimes(1)
+    })
+
+    test('Deve haver um link para ir para pagina de login', () => {
+        render(<SignUp />)
+
+        const link = screen.getByText('Já tem cadastro? Clique aqui!')
+
+        expect(link).toBeInTheDocument()
     })
 })
