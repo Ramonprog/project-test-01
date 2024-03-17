@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { Dashboard } from "."
 import { fetchPokemonList } from "../../services/PokemonService"
 import { faker } from "@faker-js/faker"
@@ -39,5 +39,13 @@ describe('testes do dashboard', () => {
         const list = await screen.findAllByRole('list')
 
         expect(list).toHaveLength(1)
+    })
+    test('Deve ser possivel clicar no li para ir aos detalhes', async () => {
+        render(<Dashboard fetchPokemonList={mockFetchListPokemonFn} />)
+
+        const linkBtn = await screen.findByText('Pikachu')
+
+        fireEvent.click(linkBtn)
+        expect(navigateMock).toHaveBeenCalledTimes(1)
     })
 })
