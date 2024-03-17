@@ -12,7 +12,17 @@ const mockFetchListPokemonFn = vi.fn(fetchPokemonList).mockImplementation(async 
     }]
 })
 
+const navigateMock = vi.fn()
 describe('testes do dashboard', () => {
+
+    vi.mock('react-router-dom', () => {
+        return {
+            useNavigate() {
+                return navigateMock;
+            }
+        }
+    })
+
     test('Deve haver um titulo', async () => {
         render(<Dashboard fetchPokemonList={mockFetchListPokemonFn} />)
 
