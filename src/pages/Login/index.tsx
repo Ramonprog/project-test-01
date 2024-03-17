@@ -16,7 +16,7 @@ export function Login() {
                 <input type="email" placeholder="Insira seu e-mail" />
                 <input type="text" placeholder="Insira Sua senha" />
                 <button type="submit">Login</button>
-                <Link to={'/signUp'}> Não tem cadastro? Clique aqui!</Link>
+                <Link to={'/signUp'}>Não tem cadastro? Clique aqui!</Link>
             </form>
 
         </div>
