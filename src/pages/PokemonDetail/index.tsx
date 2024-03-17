@@ -9,6 +9,7 @@ interface IProps {
 
 export function PokemonDetails({ fetchPokemon }: IProps) {
     const { id } = useParams()
+    const [error, setError] = useState('')
     const [pokemon, setPokemon] = useState<IPokemonType>({
         id: 0,
         name: '',
@@ -17,6 +18,12 @@ export function PokemonDetails({ fetchPokemon }: IProps) {
     })
 
     const getOnePokemonDetails = async () => {
+        setError('')
+
+        if (!id || id === '0') {
+            setError('O id não é válido')
+            return
+        }
         const data = await fetchPokemon(Number(id))
         setPokemon(data)
     }
@@ -33,6 +40,7 @@ export function PokemonDetails({ fetchPokemon }: IProps) {
                 <strong>{pokemon?.type}</strong>
             </div>
             <Link to={'/dashboard'}>Voltar</Link>
+            {error && <p>{error}</p>}
         </div>
     )
 
